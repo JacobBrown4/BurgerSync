@@ -17,10 +17,14 @@ namespace BurgerSync
             // Syncronous you can't do other stuff while peeling a potato
             potato.Peel();
             // Async
-            var fries = kitchen.MakeFriesAsync(potato);
+            var fries = kitchen.FryPotatoesAsync(potato);
             // Syncronous
             Hamburger hamburger = kitchen.AssembleBurger();
-            kitchen.PlateMeal(fries.Result, hamburger);
+            if (!fries.IsCompleted)
+            {
+                Console.WriteLine("We gotta wait for the fries");
+            }
+            kitchen.ServeMeal(fries.Result, hamburger);
             Console.ReadLine();
         }
     }
