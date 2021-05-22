@@ -1,0 +1,7 @@
+C:\ElevenFiftyProjects\86SD\BurgerSync\bin\Debug\BurgerSync.exe.config
+C:\ElevenFiftyProjects\86SD\BurgerSync\bin\Debug\BurgerSync.exe
+C:\ElevenFiftyProjects\86SD\BurgerSync\bin\Debug\BurgerSync.pdb
+C:\ElevenFiftyProjects\86SD\BurgerSync\obj\Debug\BurgerSync.csprojAssemblyReference.cache
+C:\ElevenFiftyProjects\86SD\BurgerSync\obj\Debug\BurgerSync.csproj.CoreCompileInputs.cache
+C:\ElevenFiftyProjects\86SD\BurgerSync\obj\Debug\BurgerSync.exe
+C:\ElevenFiftyProjects\86SD\BurgerSync\obj\Debug\BurgerSync.pdb
