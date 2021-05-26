@@ -8,16 +8,17 @@ namespace BurgerSync
 {
     public class Kitchen
     {
-
         public async Task<Fries> FryPotatoesAsync(Potato potato)
         {
             if (potato.IsPeeled)
             {
-                ColorDisplay("Dropping the fries in the fryer",14);
+                PrettyPrint("Dropping the fries in the fryer",14);
+                // await means the thread can continue but the method cannot. FryPotatoesAsync stops here but the overhead reading keeps going
+                // await is local to the method
                 await Task.Delay(5000);
-                ColorDisplay("Fries are still cooking", 14);
+                PrettyPrint("Fries are still cooking", 14);
                 await Task.Delay(5000);
-                ColorDisplay("DING! Fries are done",14);
+                PrettyPrint("DING! Fries are done",14);
                 return new Fries(potato);
             }
             else
@@ -29,25 +30,24 @@ namespace BurgerSync
 
         public Hamburger AssembleBurger()
         {
-            Random rand = new Random();
             var time = 1500;
+            // 1000 Hamburger are done first, 2000 fries
             Console.ForegroundColor = ConsoleColor.White;
-            ColorDisplay("Assembling the Hamburger", 13);
-            ColorDisplay("Setting the bun down", 4);
+            PrettyPrint("Assembling the Hamburger", 13);
+            PrettyPrint("Setting the bun down", 4);
             Task.Delay(time).Wait();
-            ColorDisplay("Placing the patty delicately", 12);
+            PrettyPrint("Placing the patty delicately", 12);
             Task.Delay(time).Wait();
-            ColorDisplay("Placing the cheese slice", 6);
+            PrettyPrint("Placing the cheese slice", 6);
             Task.Delay(time).Wait();
-            ColorDisplay("Grabbing some lettuce", 10);
+            PrettyPrint("Grabbing some lettuce", 10);
             Task.Delay(time).Wait();
-            ColorDisplay("Throwing some pickles down", 2);
+            PrettyPrint("Throwing some pickles down", 2);
             Task.Delay(time).Wait();
-            ColorDisplay("Throwing up some ketchup and mustard", 12);
+            PrettyPrint("Throwing up some ketchup and mustard", 12);
             Task.Delay(time).Wait();
-            ColorDisplay("Placing top bun", 4);
-
-            ColorDisplay("Burger Assembled", 13);
+            PrettyPrint("Placing top bun", 4);
+            PrettyPrint("Burger Assembled", 13);
             return new Hamburger();
         }
         public bool ServeMeal(Fries fries, Hamburger burger)
@@ -60,7 +60,7 @@ namespace BurgerSync
             Console.WriteLine("You put the fries with the burger. Meal is ready!");
             return true;
         }
-        public void ColorDisplay(string process, int color)
+        public void PrettyPrint(string process, int color)
         {
             //Black   0
             //DarkBlue    1
@@ -80,7 +80,7 @@ namespace BurgerSync
             //White   15
             Console.ForegroundColor = (ConsoleColor)color;
             Console.WriteLine(process);
-            Console.ForegroundColor = ConsoleColor.White;
+            Console.ResetColor();
         }
     }
 }
